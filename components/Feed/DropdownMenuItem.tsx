@@ -11,7 +11,6 @@ type TDropdownMenuItem = {
   setCheck: Dispatch<SetStateAction<Checked>>;
   Icon: LucideIcon;
   title: "Everyone" | "People you follow" | "Only people you mention";
-  defaultChecked?: boolean;
 };
 
 export const DropdownMenuItem: FC<TDropdownMenuItem> = ({
@@ -19,15 +18,12 @@ export const DropdownMenuItem: FC<TDropdownMenuItem> = ({
   setCheck,
   Icon,
   title,
-  defaultChecked,
 }) => {
-  const initialCheck = defaultChecked || false;
   return (
     <DropdownMenuCheckboxItem
       checked={check}
       onCheckedChange={setCheck}
       className="hover:bg-slate-100"
-      defaultChecked={initialCheck}
       style={{
         padding: "7px 16px",
       }}
@@ -38,8 +34,7 @@ export const DropdownMenuItem: FC<TDropdownMenuItem> = ({
       <p className="m:text-base flex-1 text-[15px] font-medium text-black">
         {title}
       </p>
-      {check ||
-        (initialCheck && <CheckIcon size={18} className="text-twitter" />)}
+      {check && <CheckIcon size={18} className="text-twitter" />}
     </DropdownMenuCheckboxItem>
   );
 };

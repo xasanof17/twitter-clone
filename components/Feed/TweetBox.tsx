@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 import {
   Image as ImageIcon,
   PlaySquare,
@@ -8,42 +9,52 @@ import {
   SmilePlus,
   CalendarClock,
   LucideIcon,
-  Globe2,
 } from "lucide-react";
 
 import { useState } from "react";
 import { DropdownMenuBox } from "./DropdownMenuBox";
+import EmojiPicker from "emoji-picker-react";
 
 type Widget = {
   Icon: LucideIcon;
   title: "Image" | "Gif" | "Poll" | "Emoji" | "Schedule";
+  onClick?: () => void;
 };
 
-const widgets: Widget[] = [
-  {
-    Icon: ImageIcon,
-    title: "Image",
-  },
-  {
-    Icon: PlaySquare,
-    title: "Gif",
-  },
-  {
-    Icon: BarChart4,
-    title: "Poll",
-  },
-  {
-    Icon: SmilePlus,
-    title: "Emoji",
-  },
-  {
-    Icon: CalendarClock,
-    title: "Schedule",
-  },
-];
-
 const TweetBox = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string>("");
+  const [emoji, setEmoji] = useState<boolean>(false);
+  const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
+
+  const widgets: Widget[] = [
+    {
+      Icon: ImageIcon,
+      title: "Image",
+    },
+    {
+      Icon: PlaySquare,
+      title: "Gif",
+    },
+    {
+      Icon: BarChart4,
+      title: "Poll",
+    },
+    {
+      Icon: SmilePlus,
+      title: "Emoji",
+      onClick: () => setEmoji((prev) => !prev),
+    },
+    {
+      Icon: CalendarClock,
+      title: "Schedule",
+    },
+  ];
+
+  const handleEmojiClick = (emojiObject: { emoji: string }) => {
+    setSelectedEmoji(emojiObject.emoji);
+    setInput(input + emojiObject.emoji);
+  };
+
   return (
     <div className="m:flex-row m:space-y-0 m:space-x-4 flex flex-col items-start space-y-4 border-y p-3 sm:p-5">
       <Link href="/" className="flex items-center justify-center">
@@ -70,15 +81,26 @@ const TweetBox = () => {
         </div>
         <div className="flex items-center justify-between border-t pt-2">
           <div className="flex items-center space-x-1">
-            {widgets.map(({ Icon, title }, i) => (
+            {widgets.map(({ Icon, title, onClick }, i) => (
               <button
+                type="button"
                 key={i}
                 title={title}
                 className="flex items-center justify-center rounded-full p-2 transition-all duration-200 ease-out hover:scale-110 hover:bg-twitter-hover"
+                onClick={onClick}
               >
                 <Icon size={19} className="text-twitter" />
               </button>
             ))}
+            {/* {emoji && (
+              <div className="absolute left-0 top-0 z-10">
+                <EmojiPicker
+                  width={300}
+                  height={400}
+                  onEmojiClick={handleEmojiClick}
+                />
+              </div>
+            )} */}
           </div>
           <button disabled={!input} className="tweet-btn">
             Tweet

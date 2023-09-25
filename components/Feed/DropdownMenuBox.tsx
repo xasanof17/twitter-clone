@@ -8,25 +8,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import {
-  AtSignIcon,
-  Globe2,
-  Globe2Icon,
-  UserPlus,
-  UserPlusIcon,
-} from "lucide-react";
+import { AtSignIcon, Globe2Icon, UserPlusIcon } from "lucide-react";
 import { DropdownMenuItem } from "./DropdownMenuItem";
 
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 
-export const DropdownMenuBox = ({
-  children,
-}: {
-  children?: React.ReactNode;
-}) => {
-  const [everyone, setEveryone] = useState<Checked>(true);
-  const [peopleYouFollow, setPeopleYouFollow] = useState<Checked>(false);
-  const [onlyPeopleYouMention, setOnlyPeopleMention] = useState<Checked>(false);
+export const DropdownMenuBox = () => {
   const initialState: { [key: string]: Checked } = {
     everyone: false,
     peopleYouFollow: false,
@@ -60,7 +47,7 @@ export const DropdownMenuBox = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center space-x-2 rounded-full px-2 outline-none transition-colors duration-200 hover:bg-twitter-hover">
+        <button className="flex items-center space-x-2 rounded-full px-2 outline-none transition-all duration-300 hover:bg-twitter-hover">
           {SelectedIcon && <SelectedIcon size={18} className="text-twitter" />}
           <p className="text-[15px] text-twitter sm:text-base">
             {selectedTitle} can reply
@@ -81,7 +68,6 @@ export const DropdownMenuBox = ({
           setCheck={() => handleCheckboxChange("everyone")}
           Icon={Globe2Icon}
           title="Everyone"
-          defaultChecked
         />
         <DropdownMenuItem
           check={checkboxes.peopleYouFollow}

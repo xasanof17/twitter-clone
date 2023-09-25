@@ -24,7 +24,11 @@ export function HeaderItem({
           pathname == href ? variants.active.active : variants.active.base
         }`}
       >
-        <Icon className="text-[22px] lg:text-[26px]" />
+        <Icon
+          className={`text-[22px] lg:text-[26px] ${
+            pathname == href && "text-twitter"
+          }`}
+        />
         <p className="hidden text-lg font-medium md:inline lg:text-xl">
           {title}
         </p>
