@@ -56,7 +56,7 @@ const TweetBox = () => {
   };
 
   return (
-    <div className="m:flex-row m:space-y-0 m:space-x-4 flex flex-col items-start space-y-4 border-y p-3 sm:p-5">
+    <div className="flex flex-col items-start space-y-4 border-y p-3 m:flex-row m:space-x-4 m:space-y-0 sm:p-5">
       <Link href="/" className="flex items-center justify-center">
         <div className="relative h-10 w-10">
           <Image

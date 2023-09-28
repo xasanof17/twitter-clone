@@ -31,7 +31,7 @@ export const DropdownMenuItem: FC<TDropdownMenuItem> = ({
       <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-twitter">
         <Icon size={20} color="white" />
       </div>
-      <p className="m:text-base flex-1 text-[15px] font-medium text-black">
+      <p className="flex-1 text-[15px] font-medium text-black m:text-base">
         {title}
       </p>
       {check && <CheckIcon size={18} className="text-twitter" />}

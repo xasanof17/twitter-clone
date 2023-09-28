@@ -54,7 +54,7 @@ export const DropdownMenuBox = () => {
           </p>
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="m:w-[320px] w-[280px] rounded-2xl shadow-xl">
+      <DropdownMenuContent className="w-[280px] rounded-2xl shadow-xl m:w-[320px]">
         <DropdownMenuLabel>
           <h3 className="text-base">Who can reply?</h3>
           <p className="text-[14px] text-gray-400">
