@@ -52,9 +52,4 @@ export const links: LinkType[] = [
     title: "Profile",
     href: "/profile",
   },
-  {
-    Icon: MoreHorizontal,
-    title: "More",
-    href: "/more",
-  },
 ];

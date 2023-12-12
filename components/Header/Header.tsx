@@ -1,9 +1,9 @@
 "use client";
 import { links } from "@/constants";
 import { HeaderItem } from "./HeaderItem";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 function Header() {
   const pathname = usePathname();
