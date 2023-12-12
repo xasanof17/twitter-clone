@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["links.papareact.com"],
+    remotePatterns: [
+      {
+        hostname: "links.papareact.com",
+        pathname: "**",
+        protocol: "https",
+      },
+    ],
   },
 };
 
